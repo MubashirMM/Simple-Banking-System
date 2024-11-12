@@ -1,0 +1,2 @@
+Transaction ID: 1, Account Number: 10002, Amount: 20.0, Type: deposit, Date: 2
+Transaction ID: 3, Account Number: 10002, Amount: 200.0, Type: withdrawal, Date: 4

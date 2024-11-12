@@ -9,8 +9,9 @@ public class Account {
     private double creditLimit; // for business accounts or overdraft limit for personal accounts
 
     public Account() {}
-    public Account(int accountId, int userId, int accountNumber, double balance, String accountType) {
-        this.accountId = accountId;
+    public Account(int accountId, int userId, int accountNumber, double balance)//, String accountType) {
+    {
+    	this.accountId = accountId;
         this.userId = userId;
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -41,10 +42,11 @@ public class Account {
         this.creditLimit = creditLimit;
     }
 
-    public double getCreditLimit() {
+    public double getCreditLimit() { 
         return creditLimit;
     }
-
+ 
+    //deposit amount
     public void depositAmount(double amount) {
         balance += amount;
     }

@@ -4,37 +4,33 @@ import java.io.*;
 import java.util.*;
 
 public class TransactionHistory {
-
-    // Variables
-    private int userId;
-    private List<Transaction> transactionList;
+    private int userId; // Unique ID for each user
+    private List<Transaction> transactionList; // Stores all transactions
 
     // Constructor with user ID
     public TransactionHistory(int userId) {
         this.userId = userId;
-        transactionList = new ArrayList<>();
+        this.transactionList = new ArrayList<>();
     }
 
-    // Add transaction and store in file
+    // Add a transaction and store it in the file
     public void addTransaction(Transaction newTransaction) {
         transactionList.add(newTransaction);
-        keepTransactionInFile(newTransaction);
+        saveTransactionToFile(newTransaction);
     }
 
-    // Store transaction in user-specific file
-    private void keepTransactionInFile(Transaction transaction) {
+    // Store each transaction in a user-specific file
+    private void saveTransactionToFile(Transaction transaction) {
         File file = new File("TransactionHistory_User_" + userId + ".txt");
-       // System.out.println("Attempting to create transaction file at: " + file.getAbsolutePath());
         try (FileWriter writer = new FileWriter(file, true)) {
             writer.write(transaction.toString() + "\n");
         } catch (IOException e) {
             System.err.println("Failed to create or write to the transaction file.");
-            e.printStackTrace();  // This will print the detailed error in the console
+            e.printStackTrace();
         }
     }
 
-
- // In TransactionHistory class
+    // View transaction history from the user-specific file
     public void viewTransactionHistoryFromFile() {
         File file = new File("TransactionHistory_User_" + userId + ".txt");
         if (!file.exists()) {
@@ -52,5 +48,4 @@ public class TransactionHistory {
             e.printStackTrace();
         }
     }
-
 }
